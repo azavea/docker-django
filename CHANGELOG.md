@@ -1,7 +1,5 @@
-## 0.1.1
+## 1.8.8
 
-- Fix badges in `README`.
-
-## 0.1.0
+### `18154a7`
 
 - Initial release.
