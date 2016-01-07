@@ -1,6 +1,6 @@
 FROM python:2.7-slim
 
-MAINTAINER Azavea
+MAINTAINER Azavea <systems@azavea.com>
 
 # Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /tmp/
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt \
+  && rm /tmp/requirements.txt
 
 ENTRYPOINT ["gunicorn"]
