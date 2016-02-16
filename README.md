@@ -23,12 +23,11 @@ $ docker build -t quay.io/azavea/django:latest .
 Then, run the container:
 
 ```bash
-$ docker run --rm --entrypoint pip quay.io/azavea/django:latest freeze        
-Django==1.8.8
+$ docker run --rm --entrypoint pip quay.io/azavea/django:latest freeze
+Django==1.9.2
 gevent==1.0.2
 greenlet==0.4.9
 gunicorn==19.4.5
 psycopg2==2.6.1
-virtualenv==13.1.2
 wheel==0.26.0
 ```
