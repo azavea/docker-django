@@ -1,3 +1,9 @@
+## 1.9.7
+
+### `0be0b19`
+
+- Update Django to version 1.9.7.
+
 ## 1.9.6
 
 ### `63036eb`
