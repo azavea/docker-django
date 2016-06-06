@@ -2,18 +2,23 @@ FROM python:2.7-slim
 
 MAINTAINER Azavea <systems@azavea.com>
 
-# Install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
+COPY requirements.txt /tmp/
+
+RUN set -ex \
+  && buildDeps=' \
     build-essential \
-    gdal-bin \
     libpq-dev \
     python-dev \
+	' \
+  && deps=' \
+    gdal-bin \
     git \
-    postgresql-client-9.4 && \
-    rm -rf /var/lib/apt/lists/*
-
-COPY requirements.txt /tmp/
-RUN pip install --no-cache-dir -r /tmp/requirements.txt \
-  && rm /tmp/requirements.txt
+    postgresql-client-9.4 \
+  ' \
+  && apt-get update && apt-get install -y ${buildDeps} ${deps} --no-install-recommends \
+  && rm -rf /var/lib/apt/lists/* \
+  && pip install --no-cache-dir -r /tmp/requirements.txt \
+  && rm /tmp/requirements.txt \
+  && apt-get purge -y --auto-remove ${buildDeps}
 
 ENTRYPOINT ["gunicorn"]
