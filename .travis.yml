@@ -6,26 +6,18 @@ services:
   - docker
 
 install:
-  - docker build -t quay.io/${TRAVIS_REPO_SLUG:0:6}/${TRAVIS_REPO_SLUG:14}:${TRAVIS_COMMIT:0:7} .
+  - docker build -t quay.io/azavea/django:${TRAVIS_COMMIT:0:7} .
 
 script:
-  - docker run --rm quay.io/${TRAVIS_REPO_SLUG:0:6}/${TRAVIS_REPO_SLUG:14}:${TRAVIS_COMMIT:0:7} --version
+  - docker run --rm quay.io/azavea/django:${TRAVIS_COMMIT:0:7} --version
 
-before_deploy:
+after_success:
   - docker login -e . -p "${QUAY_PASSWORD}" -u "${QUAY_USER}" quay.io
-
-deploy:
-  - provider: script
-    script: ".travis/deploy.sh"
-    on:
-      repo: azavea/docker-django
-      branch: develop
-  - provider: script
-    script: ".travis/deploy.sh"
-    on:
-      repo: azavea/docker-django
-      tags: true
-
-notifications:
-  slack:
-    secure: J6dNkUZa+UL0B8y5nhC6NnN8KjCJNQ7RmEH/rJwYlcW5QEcUXHSYMbRfWY1vw5YnEALqKRGipx0kZmJ07BKQ9djKdkT0AoeuGXf0z9s1ZGtScCBV5V9oWI8C9jQ120CJa8EBBW1jDgtfKI97N8MUjPrKRpF88Gf/1pmO0MFLMCv8zSqZ346ZEpiv1bU900cFsfQwjaST8p8gdL6Q9KEt+rKCulvuQCavBIyamrkTjgmvTK6T4dy/1wXAgWIu5dk0tRJYOwarPc70YKcGLovJ9VR6caJ+UoIV07tywf71TSixJBVIPoFupBzVtFd+jE6XAHrQZrGrpmbt0saicjOQelFM8QcXBQYVBbKBgBz8P5M5SsqqKEHfgSnrg8tSAlhqJmwujwlGNukiLCsWnG8eUnDageRoFShjWaPtdZjdpP0Sj0x/VUX/jf+pNiypFZRSqMxsFFvHjqElc25eZkhLBCmka6f3ASd3ikEb4Sh4gsBm6YLzbM1FFJlfs23A3qsPp9KbBXMyniTnHqPD7hNIk58aW7k3uRNTCJUsd754wWX27lTpV3rmnZbsK+xxIFozJlWA3jG9R9E0BUUjrsxym1jUrrm0Y1YZ0NF+jIpbhreapd8gmwp6/OqWAFR8n5hjJCIcA43G5Czy76BvAGg857r08UC8XWcKNZcrQsuIBjM=
+  - if [ "${TRAVIS_BRANCH}" == "develop" ]; then
+    docker push quay.io/azavea/django:${TRAVIS_COMMIT:0:7};
+    docker tag quay.io/azavea/django:${TRAVIS_COMMIT:0:7} quay.io/azavea/django:latest;
+    docker push quay.io/azavea:django:latest;
+    fi
+  - if [ -n "${TRAVIS_TAG}" ]; then
+    docker push quay.io/azavea/django:${TRAVIS_TAG};
+    fi
