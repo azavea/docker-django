@@ -8,8 +8,7 @@ A `Dockerfile` based off of [`django`](https://hub.docker.com/_/django/) that in
 Includes:
 
   - GDAL
-  - PostgreSQL/
-  - postgres/Psycopg
+  - PostgreSQL
   - Gevent
   - Gunicorn
 
