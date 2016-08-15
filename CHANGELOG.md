@@ -1,3 +1,10 @@
+## 1.9.9
+
+### `85c984a`
+
+- Update Django to version 1.9.9.
+- Install PostgreSQL client from official PostgreSQL APT repositories.
+
 ## 1.9.7
 
 ### `0be0b19`
