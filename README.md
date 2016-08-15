@@ -7,10 +7,10 @@ A `Dockerfile` based off of [`python:2.7-slim`](https://registry.hub.docker.com/
 
 Includes:
 
-  - gdal
-  - postgres/psycopg2
-  - gevent
-  - gunicorn
+  - GDAL
+  - PostgreSQL
+  - Gevent
+  - Gunicorn
 
 ## Usage
 
@@ -24,9 +24,9 @@ Then, run the container:
 
 ```bash
 $ docker run --rm --entrypoint pip quay.io/azavea/django:latest freeze
-Django==1.9.7
+Django==1.9.9
 gevent==1.1.1
-greenlet==0.4.9
+greenlet==0.4.10
 gunicorn==19.6.0
-psycopg2==2.6.1
+psycopg2==2.6.2
 ```
