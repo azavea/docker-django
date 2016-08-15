@@ -19,5 +19,6 @@ after_success:
     docker push quay.io/azavea:django:latest;
     fi
   - if [ -n "${TRAVIS_TAG}" ]; then
+    docker tag quay.io/azavea/django:${TRAVIS_COMMIT:0:7} quay.io/azavea/django:${TRAVIS_TAG};
     docker push quay.io/azavea/django:${TRAVIS_TAG};
     fi
