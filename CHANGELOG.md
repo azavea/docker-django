@@ -1,3 +1,11 @@
+## 1.9.10
+
+### `50f2d09`
+
+- Update Django to version 1.9.10.
+- Update Gevent to version 1.1.2.
+- Update PostgreSQL client to 9.6.
+
 ## 1.9.9
 
 ### `85c984a`
