@@ -24,7 +24,7 @@ Then, run the container:
 
 ```bash
 $ docker run --rm --entrypoint pip quay.io/azavea/django:latest freeze
-Django==1.9.11
+Django==1.10.3
 gevent==1.1.2
 greenlet==0.4.10
 gunicorn==19.6.0
