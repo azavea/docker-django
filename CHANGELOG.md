@@ -1,3 +1,9 @@
+## 1.10.4
+
+### `d121cea`
+
+- Update Django to version 1.10.4.
+
 ## 1.10.3
 
 ### `34f7a16`
