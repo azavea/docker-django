@@ -1,8 +1,14 @@
+## 1.9.12
+
+### `0da653a`
+
+- Update Django to version 1.9.12.
+
 ## 1.9.11
 
 ### `12e27eb`
 
-- Update Django to version 1.9.10.
+- Update Django to version 1.9.11.
 
 ## 1.9.10
 
