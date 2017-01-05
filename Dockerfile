@@ -5,7 +5,7 @@ MAINTAINER Azavea <systems@azavea.com>
 RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
 
 ENV PG_MAJOR 9.5
-ENV PG_CLIENT_VERSION 9.6+177.pgdg80+1
+ENV PG_CLIENT_VERSION 9.6+178.pgdg80+1
 
 RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main' ${PG_MAJOR} > /etc/apt/sources.list.d/pgdg.list
 
@@ -13,7 +13,7 @@ COPY requirements.txt /tmp/
 
 RUN set -ex \
   && buildDeps=" \
-    gcc \
+    build-essential \
     libpq-dev \
 	" \
   && deps=" \
