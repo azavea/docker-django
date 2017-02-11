@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -e
+set -u
+
+if [[ -n "${CI}" ]]; then
+    set -x
+fi
+
+function usage() {
+    echo -n \
+"Usage: $(basename "$0")
+Build container images from templates.
+"
+}
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+    if [ "${1:-}" = "--help" ]; then
+        usage
+    else
+        pushd "$VERSION"
+
+        sed -e "s/%%PYTHON_VERSION%%/$PYTHON_VERSION/" \
+            -e "s/%%PG_MAJOR%%/$PG_MAJOR/" \
+            -e "s/%%PG_VERSION%%/$PG_VERSION/" \
+            "../Dockerfile-$VARIANT.template" > Dockerfile
+
+        docker \
+            build -t "quay.io/azavea/django:$VERSION-python$PYTHON_VERSION-$VARIANT" .
+
+        popd
+
+        scripts/test
+
+        docker images
+    fi
+fi

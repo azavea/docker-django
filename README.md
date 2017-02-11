@@ -1,32 +1,22 @@
 # docker-django
 
-[![Docker Repository on Quay.io](https://quay.io/repository/azavea/django/status "Docker Repository on Quay.io")](https://quay.io/repository/azavea/django)
-[![Apache V2 License](http://img.shields.io/badge/license-Apache%20V2-blue.svg)](https://github.com/azavea/docker-django/blob/develop/LICENSE)
-
-A `Dockerfile` based off of [`python:2.7-slim`](https://registry.hub.docker.com/_/python/) that installs dependencies for a Django project with geospatial support.
-
-Includes:
-
-  - GDAL
-  - PostgreSQL
-  - Gevent
-  - Gunicorn
+This repository contains a collection of templated `Dockerfile` for image variants designed to support Django through the Gunicorn WSGI HTTP server. In addition, these images include support for GeoDjango, PostgreSQL, and Gevent.
 
 ## Usage
 
-First, build the container:
+### Template Variables
+
+- `PYTHON_VERSION` - Python interpreter version
+- `PG_MAJOR` - Major version number of the target PostgreSQL database instance
+- `PG_VERSION` - Version number for `postgresql-client` package
+- `VARIANT` - Base container image variant
+
+### Testing
+
+An example of how to use `cibuild` to build and test an image:
 
 ```bash
-$ docker build -t quay.io/azavea/django:latest .
-```
-
-Then, run the container:
-
-```bash
-$ docker run --rm --entrypoint pip quay.io/azavea/django:latest freeze
-Django==1.10.5
-gevent==1.2.0
-greenlet==0.4.10
-gunicorn==19.6.0
-psycopg2==2.6.2
+$ CI=1 VERSION=1.9 PYTHON_VERSION=2.7 \
+  PG_MAJOR=9.6 PG_VERSION=9.5.4-r0 VARIANT=alpine \
+  ./scripts/cibuild
 ```
