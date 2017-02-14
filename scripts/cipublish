@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+set -u
+
+function usage() {
+    echo -n \
+"Usage: $(basename "$0")
+Publish container images built from templates.
+"
+}
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+    if [ "${1:-}" = "--help" ]; then
+        usage
+    else
+        docker \
+            login -u "${QUAY_USER}" -p "${QUAY_PASSWORD}" quay.io;
+
+        docker \
+            push "quay.io/azavea/django:$VERSION-python$PYTHON_VERSION-$VARIANT";
+    fi
+fi

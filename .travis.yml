@@ -1,24 +1,22 @@
-sudo: required
-
 language: bash
+services: docker
 
-services:
-  - docker
-
-install:
-  - docker build -t quay.io/azavea/django:${TRAVIS_COMMIT:0:7} .
+env:
+  - VERSION=1.9 PYTHON_VERSION=2.7 PG_MAJOR=9.5 PG_VERSION=9.4+165+deb8u2 VARIANT=slim
+  - VERSION=1.9 PYTHON_VERSION=3.5 PG_MAJOR=9.5 PG_VERSION=9.4+165+deb8u2 VARIANT=slim
+  - VERSION=1.9 PYTHON_VERSION=2.7 PG_MAJOR=9.5 PG_VERSION=9.5.4-r0 VARIANT=alpine
+  - VERSION=1.9 PYTHON_VERSION=3.5 PG_MAJOR=9.5 PG_VERSION=9.5.4-r0 VARIANT=alpine
+  - VERSION=1.10 PYTHON_VERSION=2.7 PG_MAJOR=9.6 PG_VERSION=9.6+180.pgdg80+1 VARIANT=slim
+  - VERSION=1.10 PYTHON_VERSION=3.5 PG_MAJOR=9.6 PG_VERSION=9.6+180.pgdg80+1 VARIANT=slim
+  - VERSION=1.10 PYTHON_VERSION=2.7 PG_MAJOR=9.6 PG_VERSION=9.5.4-r0 VARIANT=alpine
+  - VERSION=1.10 PYTHON_VERSION=3.5 PG_MAJOR=9.6 PG_VERSION=9.5.4-r0 VARIANT=alpine
 
 script:
-  - docker run --rm quay.io/azavea/django:${TRAVIS_COMMIT:0:7} --version
+  - ./scripts/cibuild
 
-after_success:
-  - docker login -e . -p "${QUAY_PASSWORD}" -u "${QUAY_USER}" quay.io
-  - if [ "${TRAVIS_BRANCH}" == "develop" ]; then
-    docker push quay.io/azavea/django:${TRAVIS_COMMIT:0:7};
-    docker tag quay.io/azavea/django:${TRAVIS_COMMIT:0:7} quay.io/azavea/django:latest;
-    docker push quay.io/azavea:django:latest;
-    fi
-  - if [ -n "${TRAVIS_TAG}" ]; then
-    docker tag quay.io/azavea/django:${TRAVIS_COMMIT:0:7} quay.io/azavea/django:${TRAVIS_TAG};
-    docker push quay.io/azavea/django:${TRAVIS_TAG};
-    fi
+deploy:
+  - provider: script
+    script: "scripts/cipublish"
+    on:
+      repo: azavea/docker-django
+      branch: master
