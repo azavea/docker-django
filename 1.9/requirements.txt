@@ -1,4 +1,4 @@
 gunicorn==19.7.1
 django==1.9.13
-psycopg2==2.7.1
-gevent==1.2.1
+psycopg2==2.7.3
+gevent==1.2.2
