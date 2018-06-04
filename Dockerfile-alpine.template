@@ -10,11 +10,13 @@ COPY requirements.txt /tmp/
 RUN set -ex \
     && apk add --no-cache --virtual .build-deps \
        gcc \
-       postgresql-dev=${PG_VERSION} \
+       postgresql-dev=$PG_VERSION \
        musl-dev \
     && apk add --no-cache \
        gettext \
-       postgresql-client=${PG_VERSION} \
+       postgresql-client=$PG_VERSION \
+    && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
+        libressl2.7-libcrypto \    
     && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
        gdal \
     && pip install --no-cache-dir -r /tmp/requirements.txt \
