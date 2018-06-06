@@ -6,17 +6,17 @@ This repository contains a collection of templated `Dockerfile` for image varian
 
 ### Template Variables
 
-- `PYTHON_VERSION` - Python interpreter version
-- `PG_MAJOR` - Major version number of the target PostgreSQL database instance
-- `PG_VERSION` - Version number for `postgresql-client` package
-- `VARIANT` - Base container image variant
+- `PYTHON_VERSION` - Python interpreter version (for `python:*-slim-stretch` or `python:*-alpine` [images](https://hub.docker.com/_/python/))
+- `PG_MAJOR` - Major version number of the target PostgreSQL database instance (`9.3`, `9.4`, `9.5`, `9.6`, and `10`)
+- `PG_VERSION` - Version number for `postgresql-client-$PG_MAJOR` package
+- `VARIANT` - Base container image variant (`alpine` or `slim`)
 
 ### Testing
 
 An example of how to use `cibuild` to build and test an image:
 
 ```bash
-$ CI=1 VERSION=1.9 PYTHON_VERSION=2.7 \
-  PG_MAJOR=9.6 PG_VERSION=9.5.4-r0 VARIANT=alpine \
+$ CI=1 VERSION=2.0 PYTHON_VERSION=3.6 \
+  PG_MAJOR=10 PG_VERSION=10.4-2.pgdg90+1 VARIANT=slim
   ./scripts/cibuild
 ```
