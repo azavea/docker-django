@@ -17,6 +17,9 @@ env:
   - VERSION=2.0 PYTHON_VERSION=3.7 PG_MAJOR=10 PG_VERSION=10.5-1.pgdg90+1 VARIANT=slim
   - VERSION=2.0 PYTHON_VERSION=3.7 PG_MAJOR=10 PG_VERSION=10.5-r0 VARIANT=alpine
 
+before_script:
+  - wget -qO- 'https://github.com/tianon/pgp-happy-eyeballs/raw/master/hack-my-builds.sh' | bash
+
 script:
   - ./scripts/cibuild
 
