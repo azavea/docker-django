@@ -15,9 +15,9 @@ RUN set -ex \
     && apk add --no-cache \
        gettext \
        postgresql-client=$PG_VERSION \
-    && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
-        libressl2.7-libcrypto \    
-    && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    && apk add --no-cache \
+        --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
+        --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
        gdal \
     && pip install --no-cache-dir -r /tmp/requirements.txt \
     && apk del .build-deps \

@@ -17,6 +17,6 @@ An example of how to use `cibuild` to build and test an image:
 
 ```bash
 $ CI=1 VERSION=2.0 PYTHON_VERSION=3.6 \
-  PG_MAJOR=10 PG_VERSION=10.5-1.pgdg90+1 VARIANT=slim \
+  PG_MAJOR=10 PG_VERSION=10.6-1.pgdg90+1 VARIANT=slim \
   ./scripts/cibuild
 ```
