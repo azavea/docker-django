@@ -36,6 +36,7 @@ RUN set -ex \
        libpq-dev \
     " \
     && deps=" \
+       openssl \
        gdal-bin \
        gettext \
        postgresql-client-$PG_MAJOR=$PG_VERSION \
