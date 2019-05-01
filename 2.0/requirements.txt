@@ -1,4 +1,4 @@
 gunicorn==19.9.0
 django==2.0.13
-psycopg2==2.7.7 --no-binary psycopg2
+psycopg2==2.8.2
 gevent==1.4.0
