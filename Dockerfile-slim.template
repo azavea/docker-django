@@ -1,7 +1,5 @@
 FROM python:%%PYTHON_VERSION%%-slim-stretch
 
-MAINTAINER Azavea <systems@azavea.com>
-
 RUN set -ex; \
 	if ! command -v gpg > /dev/null; then \
 		apt-get update; \
