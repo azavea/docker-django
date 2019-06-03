@@ -1,7 +1,5 @@
 FROM python:%%PYTHON_VERSION%%-alpine
 
-MAINTAINER Azavea <systems@azavea.com>
-
 ENV PG_MAJOR %%PG_MAJOR%%
 ENV PG_VERSION %%PG_VERSION%%
 
