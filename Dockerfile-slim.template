@@ -1,4 +1,4 @@
-FROM python:%%PYTHON_VERSION%%-slim-stretch
+FROM python:%%PYTHON_VERSION%%-slim-buster
 
 RUN set -ex; \
 	if ! command -v gpg > /dev/null; then \
