@@ -17,7 +17,7 @@ RUN set -ex \
        postgresql-client=$PG_VERSION \
     && apk add --no-cache \
         --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
-        --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+        --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
        gdal \
     && pip install --no-cache-dir -r /tmp/requirements.txt \
     && apk del .build-deps \
