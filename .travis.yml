@@ -14,6 +14,8 @@ env:
   - VERSION=2.2 PYTHON_VERSION=3.6 PG_MAJOR=11 PG_VERSION=11.6-r0 VARIANT=alpine
   - VERSION=2.2 PYTHON_VERSION=3.7 PG_MAJOR=10 PG_VERSION=10.11-1.pgdg100+1 VARIANT=slim
   - VERSION=2.2 PYTHON_VERSION=3.7 PG_MAJOR=11 PG_VERSION=11.6-r0 VARIANT=alpine
+  - VERSION=2.2 PYTHON_VERSION=3.8 PG_MAJOR=10 PG_VERSION=10.11-1.pgdg100+1 VARIANT=slim
+  - VERSION=2.2 PYTHON_VERSION=3.8 PG_MAJOR=11 PG_VERSION=11.6-r0 VARIANT=alpine
 
 before_script:
   - wget -qO- 'https://github.com/tianon/pgp-happy-eyeballs/raw/master/hack-my-builds.sh' | bash
