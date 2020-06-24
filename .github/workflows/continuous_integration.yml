@@ -36,7 +36,7 @@ jobs:
       - run: ./scripts/cibuild
 
       - run: ./scripts/cipublish
-        if: github.ref == 'refs/heads/master'
+        # if: github.ref == 'refs/heads/master'
         env:
           QUAY_USER: ${{ secrets.QUAY_IMAGES_USER }}
           QUAY_PASSWORD: ${{ secrets.QUAY_IMAGES_PASSWORD }}
