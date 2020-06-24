@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        django_version: ["2.2"]
+        python_version: ["3.6", "3.7", "3.8"]
+        variant: [alpine, slim]
+        include:
+          - variant: alpine
+            pg_major: 12
+            pg_version: 12.2-r0
+          - variant: slim
+            pg_major: 10
+            pg_version: 10.13-1.pgdg100+1
+    env:
+      CI: 1
+      DOCKER_BUILDKIT: 1
+      VERSION: ${{ matrix.django_version }}
+      PYTHON_VERSION: ${{ matrix.python_version }}
+      PG_MAJOR: ${{ matrix.pg_major }}
+      PG_VERSION: ${{ matrix.pg_version }}
+      VARIANT: ${{ matrix.variant }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: ./scripts/cibuild
