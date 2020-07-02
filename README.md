@@ -7,7 +7,7 @@ This repository contains a collection of templated `Dockerfile` for image varian
 ### Template Variables
 
 - `PYTHON_VERSION` - Python interpreter version (for `python:*-slim-buster` or `python:*-alpine` [images](https://hub.docker.com/_/python/))
-- `PG_MAJOR` - Major version number of the target PostgreSQL database instance (`9.3`, `9.4`, `9.5`, `9.6`, and `10`)
+- `PG_MAJOR` - Major version number of the target PostgreSQL database instance (`10` and `12`)
 - `PG_VERSION` - Version number for `postgresql-client-$PG_MAJOR` package
 - `VARIANT` - Base container image variant (`alpine` or `slim`)
 
