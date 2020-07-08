@@ -1,5 +1,7 @@
 # docker-django
 
+![](https://github.com/azavea/docker-django/workflows/CI/badge.svg)
+
 This repository contains a collection of templated `Dockerfile` for image variants designed to support Django through the Gunicorn WSGI HTTP server. In addition, these images include support for GeoDjango, PostgreSQL, and Gevent.
 
 ## Usage
