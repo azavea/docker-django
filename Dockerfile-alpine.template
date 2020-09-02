@@ -8,6 +8,7 @@ COPY requirements.txt /tmp/
 RUN set -ex \
     && apk add --no-cache --virtual .build-deps \
        gcc \
+       libffi-dev \
        postgresql-dev=$PG_VERSION \
        musl-dev \
     && apk add --no-cache \
