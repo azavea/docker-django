@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/2.2"
+    schedule:
+      interval: "weekly"
+    reviewers:
+      - "azavea/operations"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    reviewers:
+      - "azavea/operations"
