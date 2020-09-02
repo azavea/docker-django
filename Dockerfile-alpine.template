@@ -1,4 +1,4 @@
-FROM python:%%PYTHON_VERSION%%-alpine3.11
+FROM python:%%PYTHON_VERSION%%-alpine3.12
 
 ENV PG_MAJOR %%PG_MAJOR%%
 ENV PG_VERSION %%PG_VERSION%%
@@ -9,8 +9,9 @@ RUN set -ex \
     && apk add --no-cache --virtual .build-deps \
        gcc \
        libffi-dev \
-       postgresql-dev=$PG_VERSION \
+       make \
        musl-dev \
+       postgresql-dev=$PG_VERSION \
     && apk add --no-cache \
        gettext \
        postgresql-client=$PG_VERSION \
