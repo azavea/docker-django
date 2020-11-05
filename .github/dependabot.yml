@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "pip"
     directory: "/2.2"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     reviewers:
       - "azavea/operations"
 
