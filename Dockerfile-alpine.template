@@ -8,6 +8,7 @@ COPY requirements.txt /tmp/
 RUN set -ex \
     && apk add --no-cache --virtual .build-deps \
        gcc \
+       g++ \
        libffi-dev \
        make \
        musl-dev \
