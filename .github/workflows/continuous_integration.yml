@@ -22,7 +22,7 @@ jobs:
             pg_version: 12.5-r0
           - variant: slim
             pg_major: 11
-            pg_version: 11.10-1.pgdg100+1
+            pg_version: 11.11-1.pgdg100+1
     env:
       DOCKER_BUILDKIT: 1
       VERSION: ${{ matrix.django_version }}
