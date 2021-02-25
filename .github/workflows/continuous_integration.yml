@@ -19,7 +19,7 @@ jobs:
         include:
           - variant: alpine
             pg_major: 12
-            pg_version: 12.5-r0
+            pg_version: 12.6-r0
           - variant: slim
             pg_major: 11
             pg_version: 11.11-1.pgdg100+1
