@@ -31,7 +31,7 @@ jobs:
       PG_VERSION: ${{ matrix.pg_version }}
       VARIANT: ${{ matrix.variant }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - run: ./scripts/cibuild
 
