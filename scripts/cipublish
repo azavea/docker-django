@@ -18,6 +18,6 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
             login -u "${QUAY_USER}" -p "${QUAY_PASSWORD}" quay.io;
 
         docker \
-            push "quay.io/azavea/django:$VERSION-python$PYTHON_VERSION-$VARIANT";
+            push "quay.io/azavea/django:$VERSION-python$PYTHON_VERSION-slim";
     fi
 fi

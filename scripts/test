@@ -19,9 +19,9 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
         usage
     else
         docker run --rm --entrypoint django-admin \
-            "quay.io/azavea/django:${VERSION}-python${PYTHON_VERSION}-${VARIANT}" --version
+            "quay.io/azavea/django:${VERSION}-python${PYTHON_VERSION}-slim" --version
 
         docker run --rm \
-            "quay.io/azavea/django:${VERSION}-python${PYTHON_VERSION}-${VARIANT}" --version
+            "quay.io/azavea/django:${VERSION}-python${PYTHON_VERSION}-slim" --version
     fi
 fi

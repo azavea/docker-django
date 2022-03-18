@@ -13,25 +13,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        django_version: ["2.2", "3.2"]
-        python_version: ["3.6", "3.7", "3.8", "3.9"]
-        variant: [alpine, slim]
-        include:
-          - variant: alpine
-            pg_major: 12
-            pg_version: 12.7-r0
-          - variant: slim
-            pg_major: 11
-            pg_version: 11.12-1.pgdg100+1
+        django_version: ["3.2"]
+        python_version: ["3.10"]
+
     env:
       DOCKER_BUILDKIT: 1
       VERSION: ${{ matrix.django_version }}
       PYTHON_VERSION: ${{ matrix.python_version }}
-      PG_MAJOR: ${{ matrix.pg_major }}
-      PG_VERSION: ${{ matrix.pg_version }}
-      VARIANT: ${{ matrix.variant }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - run: ./scripts/cibuild
 

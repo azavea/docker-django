@@ -21,12 +21,10 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
         pushd "$VERSION"
 
         sed -e "s/%%PYTHON_VERSION%%/$PYTHON_VERSION/" \
-            -e "s/%%PG_MAJOR%%/$PG_MAJOR/" \
-            -e "s/%%PG_VERSION%%/$PG_VERSION/" \
-            "../Dockerfile-$VARIANT.template" > Dockerfile
+            "../Dockerfile-slim.template" > Dockerfile
 
         docker \
-            build -t "quay.io/azavea/django:$VERSION-python$PYTHON_VERSION-$VARIANT" .
+            build -t "quay.io/azavea/django:$VERSION-python$PYTHON_VERSION-slim" .
 
         popd
 
